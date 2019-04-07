@@ -109,4 +109,27 @@ mybatis集成:
         @CacheEvict
  redis 自定义缓存管理器:
     如该项目中RedisCacheConfigurationSelf类
-    
+
+
+利用Spring Boot的特性进行监控你的应用
+1.通过HTTP（最简单方便）
+2.通过JMX
+3.通过远程shell
+一、添加依赖
+<!-- actuator -->
+<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+二、端点（通过执行器端点可以监控应用及与应用进行交互）
+1.端点暴露的方式取决于你采用的监控方式。如果使用HTTP监控，端点的ID映射到一个URL。例如，默认情况下，health端点将被映射到/health。
+2.端点会默认有敏感度，根据不同的敏感度是否需要提供用户密码认证
+3.如果没启用web安全，则敏感度高的会禁用
+4.可以通过配置文件进行配置敏感度
+5.默认情况下，除了shutdown外的所有端点都是启用的。
+三、配置
+#监控配置，暴露除了env,beans这两个所有端点（url接口,/actuator这个是url默认前缀）
+management.endpoints.web.exposure.include=*
+management.endpoints.web.exposure.exclude=env,beans
+五、官方参考地址:
+https://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#production-ready-endpoints-exposing-endpoints
