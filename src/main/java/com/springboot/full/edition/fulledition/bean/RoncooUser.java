@@ -3,6 +3,7 @@
  */
 package com.springboot.full.edition.fulledition.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,9 @@ import java.util.Date;
  * 
  * @author wujing
  */
-public class RoncooUser {
+public class RoncooUser implements Serializable {
+	private static final long serialVersionUID = -6558279573469790016L;
+
 	private int id;
 	private String name;
 	private Date createTime;

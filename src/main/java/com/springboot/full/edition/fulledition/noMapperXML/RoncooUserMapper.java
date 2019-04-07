@@ -16,4 +16,6 @@ public interface RoncooUserMapper {
 	public int update(RoncooUser record);
 	@Select("select * from roncoo_user where name like concat('%',#{name},'%')")
 	public List<RoncooUser> likeName(String name);
+	@Delete(value = "delete from roncoo_user where id=#{id}")
+	public int delete(Integer id);
 }

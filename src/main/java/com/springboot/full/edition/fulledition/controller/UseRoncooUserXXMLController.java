@@ -51,4 +51,30 @@ public class UseRoncooUserXXMLController {
         return roncooUser;
     }
 
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public String insert(RoncooUser roncooUser){
+        log.info("======UseRoncooUserXXMLController.insert=====传入的参数==roncooUser:"+JSON.toJSONString(roncooUser));
+        try {
+            int result=useRoncooUserXMLService.insert(roncooUser);
+            log.info("======UseRoncooUserXXMLController.insert=====返回=result:"+result);
+        } catch (Exception e) {
+            log.error("======UseRoncooUserXXMLController.insert=====异常==e:",e);
+            return "===insert异常==";
+        }
+        return "===insert成功==";
+    }
+
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public String update(RoncooUser roncooUser){
+        log.info("======UseRoncooUserXXMLController.update=====传入的参数==roncooUser:"+JSON.toJSONString(roncooUser));
+        try {
+            int result=useRoncooUserXMLService.update(roncooUser);
+            log.info("======UseRoncooUserXXMLController.update=====返回=result:"+result);
+        } catch (Exception e) {
+            log.error("======UseRoncooUserXXMLController.update=====异常==e:",e);
+            return "===update异常==";
+        }
+        return "===update成功==";
+    }
+
 }

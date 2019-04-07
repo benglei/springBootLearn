@@ -39,17 +39,41 @@ public class RoncooUserController {
     @RequestMapping(value = "/selectById/{id}",method = RequestMethod.GET )
     public RoncooUser selectByid(@PathVariable(value = "id") int id){
         System.out.println("======RoncooUserController.selectByPrimaryKey=====传入的参数==id:"+id);
-        log.info("======RoncooUserController.selectByPrimaryKey=====传入的参数==id:"+id);
+        log.info("======RoncooUserController.selectByid=====传入的参数==id:"+id);
         RoncooUser roncooUser = null;
         try {
             roncooUser=roncooUserService.selectByPrimaryKey(id);
-            log.info("======RoncooUserController.selectByPrimaryKey=====返回==roncooUser:"+ JSON.toJSONString(roncooUser));
+            log.info("======RoncooUserController.selectByid=====返回==roncooUser:"+ JSON.toJSONString(roncooUser));
         } catch (Exception e) {
-            log.error("======RoncooUserController.selectByPrimaryKey=====异常==e:",e);
+            log.error("======RoncooUserController.selectByid=====异常==e:",e);
             return null;
         }
         return roncooUser;
     }
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public String insert(RoncooUser roncooUser){
+        log.info("======RoncooUserController.insert=====传入的参数==roncooUser:"+JSON.toJSONString(roncooUser));
+        try {
+            int result=roncooUserService.insert(roncooUser);
+            log.info("======RoncooUserController.insert=====返回=result:"+result);
+        } catch (Exception e) {
+            log.error("======RoncooUserController.insert=====异常==e:",e);
+            return "===insert异常==";
+        }
+        return "===insert成功==";
+    }
 
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public String update(RoncooUser roncooUser){
+        log.info("======RoncooUserController.update=====传入的参数==roncooUser:"+JSON.toJSONString(roncooUser));
+        try {
+            int result=roncooUserService.update(roncooUser);
+            log.info("======RoncooUserController.update=====返回=result:"+result);
+        } catch (Exception e) {
+            log.error("======RoncooUserController.update=====异常==e:",e);
+            return "===update异常==";
+        }
+        return "===update成功==";
+    }
 
 }
