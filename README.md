@@ -45,5 +45,6 @@ springBoot的学习仓库
         @CachePut
         //主要针对方法配置，能够根据一定的条件对缓存进行清空。 适用于删除
         @CacheEvict
- 
+ redis 自定义缓存管理器:
+    如该项目中RedisCacheConfigurationSelf类
     
